@@ -17,7 +17,8 @@
 # @author: Kyle Mestery, Cisco Systems, Inc.
 
 #
-# This is used to test keystone roles, specifically the advsvc stuff
+# This is used to test keystone roles with neutron, specifically the advsvc role
+# cases.
 #
 # For launchpad bug:
 # https://launchpad.net/bugs/1331836
