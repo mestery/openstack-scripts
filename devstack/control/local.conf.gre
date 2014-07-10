@@ -19,18 +19,13 @@ enable_service tempest
 # NOTE: Set this to your hosts IP
 HOST_IP=
 
+# ODL WITH ML2
 Q_PLUGIN=ml2
-Q_ML2_PLUGIN_MECHANISM_DRIVERS=opendaylight,logger
-enable_service odl-server odl-compute
-#ODL_ARGS="-Xmx1024m -XX:MaxPermSize=512m"
-#ODL_BOOT_WAIT=70
-#enable_service odl-compute
-# NOTE: Set this to your ODL controller IP
-#ODL_MGR_IP=192.168.56.1
-
-disable_service q-agt
-
+Q_ML2_PLUGIN_MECHANISM_DRIVERS=openvswitch,logger
+Q_AGENT=openvswitch
+enable_service q-agt
 ENABLE_TENANT_TUNNELS=True
+
 # The below pull gerrit patches
 #NEUTRON_REPO=https://github.com/CiscoSystems/neutron.git
 #NEUTRON_BRANCH=bp/ml2-opendaylight-mechanism-driver

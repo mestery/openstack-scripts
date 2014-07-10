@@ -1,0 +1,47 @@
+[[local|localrc]]
+LOGFILE=stack.sh.log
+LOG_COLOR=False
+SCREEN_LOGDIR=/opt/stack/data/log
+#OFFLINE=true
+RECLONE=yes
+
+disable_all_services
+enable_service nova n-cpu quantum n-novnc qpid
+
+# NOTE: Set this to the host's name
+HOST_NAME=
+# NOTE: Set this to the host's IP address
+HOST_IP=192.168.64.81
+# NOTE: Set this to the controller's hostname
+SERVICE_HOST_NAME=
+# NOTE: Set this to the controller's IP address
+SERVICE_HOST=192.168.64.80
+# NOTE: Set this to the host's IP address
+VNCSERVER_PROXYCLIENT_ADDRESS=
+VNCSERVER_LISTEN=0.0.0.0
+
+FLOATING_RANGE=192.168.210.0/24
+
+# NOTE: Set these to pull patches from gerrit
+#NEUTRON_REPO=https://github.com/CiscoSystems/neutron.git
+#NEUTRON_BRANCH=odl_ml2
+
+Q_PLUGIN=ml2
+Q_ML2_PLUGIN_MECHANISM_DRIVERS=opendaylight
+enable_service odl-compute
+# NOTE: Set this to the controller's IP address
+ODL_MGR_IP=
+
+Q_HOST=$SERVICE_HOST
+MYSQL_HOST=$SERVICE_HOST
+RABBIT_HOST=$SERVICE_HOST
+GLANCE_HOSTPORT=$SERVICE_HOST:9292
+KEYSTONE_AUTH_HOST=$SERVICE_HOST
+KEYSTONE_SERVICE_HOST=$SERVICE_HOST
+
+MYSQL_PASSWORD=mysql
+RABBIT_PASSWORD=rabbit
+QPID_PASSWORD=rabbit
+SERVICE_TOKEN=service
+SERVICE_PASSWORD=admin
+ADMIN_PASSWORD=admin

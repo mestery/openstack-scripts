@@ -1,0 +1,46 @@
+[[local|localrc]]
+LOGFILE=stack.sh.log
+LOG_COLOR=False
+SCREEN_LOGDIR=/opt/stack/data/log
+#OFFLINE=true
+RECLONE=yes
+
+disable_all_services
+enable_service neutron nova n-cpu quantum q-agt n-novnc qpid
+
+HOST_NAME=fos-compute1.kmestery.cisco.com
+# NOTE: Set this to the hosts IP address.
+HOST_IP=
+# NOTE: Set this to the controller's host name
+SERVICE_HOST_NAME=
+# NOTE: Set this to the controller's host IP
+SERVICE_HOST=
+# NOTE: Set this to the hosts IP address
+VNCSERVER_PROXYCLIENT_ADDRESS=
+VNCSERVER_LISTEN=0.0.0.0
+
+FLOATING_RANGE=192.168.210.0/24
+
+# NOTE: Set these to pull patches from gerrit
+#NEUTRON_REPO=https://github.com/CiscoSystems/neutron.git
+#NEUTRON_BRANCH=odl_ml2
+
+Q_PLUGIN=ml2
+Q_HOST=$SERVICE_HOST
+Q_ML2_PLUGIN_MECHANISM_DRIVERS=openvswitch,logger
+Q_AGENT=openvswitch
+enable_service q-agt
+ENABLE_TENANT_TUNNELS=True
+
+MYSQL_HOST=$SERVICE_HOST
+RABBIT_HOST=$SERVICE_HOST
+GLANCE_HOSTPORT=$SERVICE_HOST:9292
+KEYSTONE_AUTH_HOST=$SERVICE_HOST
+KEYSTONE_SERVICE_HOST=$SERVICE_HOST
+
+MYSQL_PASSWORD=mysql
+RABBIT_PASSWORD=rabbit
+QPID_PASSWORD=rabbit
+SERVICE_TOKEN=service
+SERVICE_PASSWORD=admin
+ADMIN_PASSWORD=admin
