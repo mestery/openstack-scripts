@@ -31,6 +31,9 @@ ASUSER=suser
 # Test user
 KM=km
 
+# Second test user
+TU=tuser
+
 # Create the advsvc role
 keystone role-create --name $AS
 
@@ -45,6 +48,15 @@ KMTENANTID=$(keystone tenant-list | grep $KM | cut -d '|' -f 2)
 
 # Create the km user
 keystone user-create --name $KM --tenant $KMTENANTID --enabled true --pass admin
+
+# Create the tuser tenant
+keystone tenant-create --name $TU
+
+# Get the tuser tenant ID
+TUTENANTID=$(keystone tenant-list | grep $TU | cut -d '|' -f 2)
+
+# Create the tuser user
+keystone user-create --name $TU --tenant $TUTENANTID --enabled true --pass admin
 
 # Create the service tenant
 keystone tenant-create --name $ASUSER
