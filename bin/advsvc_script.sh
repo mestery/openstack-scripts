@@ -38,7 +38,7 @@ TU=tuser
 keystone role-create --name $AS
 
 # Get the advsvc role ID
-ASROLEID=$(keystone role-get admin |grep id | cut -d '|' -f 3)
+ASROLEID=$(keystone role-get $AS |grep id | cut -d '|' -f 3)
 
 # Create the km tenant
 keystone tenant-create --name $KM
