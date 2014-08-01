@@ -24,7 +24,11 @@
 # https://launchpad.net/bugs/1331836
 #
 
+# advsvc role and user
 AS=advsvc
+ASUSER=suser
+
+# Test user
 KM=km
 
 # Create the advsvc role
@@ -33,18 +37,26 @@ keystone role-create --name $AS
 # Get the advsvc role ID
 ASROLEID=$(keystone role-get admin |grep id | cut -d '|' -f 3)
 
-# Get the demo tenant ID
-DEMOTENANTID=$(keystone tenant-list | grep -v _demo | grep demo | cut -d '|' -f 2)
-
-# Add the role to the demo user
-keystone user-role-add --user demo --role $ASROLEID --tenant $DEMOTENANTID
-
 # Create the km tenant
 keystone tenant-create --name $KM
 
 # Get the km tenant ID
-KMTENANTID=$(keystone tenant-list | grep km | cut -d '|' -f 2)
+KMTENANTID=$(keystone tenant-list | grep $KM | cut -d '|' -f 2)
 
 # Create the km user
 keystone user-create --name $KM --tenant $KMTENANTID --enabled true --pass admin
 
+# Create the service tenant
+keystone tenant-create --name $ASUSER
+
+# Get the advsvc tenant ID
+ADVSVCTENANTID=$(keystone tenant-list | grep $ASUSER | cut -d '|' -f 2)
+
+# Create the service user
+keystone user-create --name $ASUSER --tenant $KMTENANTID --enabled true --pass admin
+
+# Get the service tenant ID
+SUSERTENANTID=$(keystone tenant-list | grep $ASUSER | cut -d '|' -f 2)
+
+# Add the role to the service user
+keystone user-role-add --user $ASUSER --role $ASROLEID --tenant $SUSERTENANTID
