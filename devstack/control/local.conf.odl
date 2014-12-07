@@ -4,6 +4,8 @@ LOG_COLOR=False
 #OFFLINE=True
 RECLONE=yes
 
+disable_service swift
+disable_service cinder
 disable_service n-net
 enable_service q-svc
 enable_service q-dhcp
