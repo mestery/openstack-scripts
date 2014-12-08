@@ -1,4 +1,5 @@
 [[local|localrc]] LOGFILE=stack.sh.log
+LOGFILE=stack.sh.log
 SCREEN_LOGDIR=/opt/stack/data/log
 LOG_COLOR=False
 OFFLINE=True
