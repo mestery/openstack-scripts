@@ -1,5 +1,4 @@
 [[local|localrc]]
-enable_plugin networking-odl https://github.com/stackforge/networking-odl
 LOGFILE=stack.sh.log
 LOG_COLOR=False
 SCREEN_LOGDIR=/opt/stack/data/log
@@ -32,6 +31,7 @@ FLOATING_RANGE=192.168.210.0/24
 #enable_service qpid
 
 Q_PLUGIN=ml2
+enable_plugin networking-odl https://github.com/stackforge/networking-odl
 ODL_MODE=compute
 # NOTE: Set this to the controller's IP address
 ODL_MGR_IP=
