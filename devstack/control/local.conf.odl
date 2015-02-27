@@ -1,4 +1,5 @@
-[[local|localrc]] LOGFILE=stack.sh.log
+[[local|localrc]]
+enable_plugin networking-odl https://github.com/stackforge/networking-odl
 LOGFILE=stack.sh.log
 SCREEN_LOGDIR=/opt/stack/data/log
 LOG_COLOR=False
@@ -23,15 +24,14 @@ enable_service tempest
 HOST_IP=
 
 Q_PLUGIN=ml2
-Q_ML2_PLUGIN_MECHANISM_DRIVERS=opendaylight,logger
-enable_service odl-server odl-compute
+#See: https://github.com/stackforge/networking-odl/blob/master/devstack/settings
+#ODL_MODE=allinone
+ODL_NETVIRT_DEBUG_LOGS=True
 #ODL_ARGS="-Xmx1024m -XX:MaxPermSize=512m"
 #ODL_BOOT_WAIT=70
-#enable_service odl-compute
 # NOTE: Set this to your ODL controller IP
 #ODL_MGR_IP=192.168.56.1
 
-disable_service q-agt
 ENABLE_TENANT_TUNNELS=True
 
 # The below pull gerrit patches
