@@ -31,6 +31,8 @@ enable_service q-agt
 ENABLE_TENANT_VLANS=True
 PHYSICAL_NETWORK=physnet1
 TENANT_VLAN_RANGE=100:200
+# Ensure this is created by running a command like the following:
+#   sudo ip link add dev lb0 type veth peer name lb1
 LB_PHYSICAL_INTERFACE=lb0
 
 # NOTE: This is used to pull gerrit patches down.
