@@ -1,0 +1,65 @@
+[[local|localrc]] LOGFILE=stack.sh.log
+LOGFILE=stack.sh.log
+SCREEN_LOGDIR=/opt/stack/data/log
+LOG_COLOR=False
+#OFFLINE=True
+RECLONE=yes
+
+disable_service swift
+disable_service cinder
+disable_service n-net
+enable_service q-svc
+enable_service q-dhcp
+enable_service q-l3
+enable_service q-meta
+enable_service q-vpn
+enable_service q-metering
+enable_service q-lbaas
+enable_service q-fwaas
+enable_service neutron
+enable_service tempest
+
+# NOTE: Set this to your host IP
+HOST_IP=
+
+# ODL WITH ML2
+Q_PLUGIN=ml2
+Q_ML2_PLUGIN_MECHANISM_DRIVERS=linuxbridge,logger
+Q_AGENT=linuxbridge
+enable_service q-agt
+
+ENABLE_TENANT_VLANS=True
+PHYSICAL_NETWORK=physnet1
+TENANT_VLAN_RANGE=100:200
+LB_PHYSICAL_INTERFACE=lb0
+
+# NOTE: This is used to pull gerrit patches down.
+#NEUTRON_REPO=https://review.openstack.org/openstack/neutron
+#NEUTRON_BRANCH=refs/changes/12/192712/5
+
+HOST_NAME=$(hostname)
+SERVICE_HOST_NAME=${HOST_NAME}
+# NOTE: Set the below to your host IP
+SERVICE_HOST=
+
+# NOTE: Set the below to your host IP
+VNCSERVER_PROXYCLIENT_ADDRESS=
+VNCSERVER_LISTEN=0.0.0.0
+
+#FLOATING_RANGE=192.168.100.0/24
+MYSQL_HOST=$SERVICE_HOST
+RABBIT_HOST=$SERVICE_HOST
+GLANCE_HOSTPORT=$SERVICE_HOST:9292
+KEYSTONE_AUTH_HOST=$SERVICE_HOST
+KEYSTONE_SERVICE_HOST=$SERVICE_HOST
+
+# Set these if you are running this on an OpenStack cloud such as HP
+# which itself may use the same default IP information as devstack
+#NETWORK_GATEWAY=10.100.100.100
+#FIXED_RANGE=10.100.100.0/24
+
+MYSQL_PASSWORD=mysql
+RABBIT_PASSWORD=rabbit
+SERVICE_TOKEN=service
+SERVICE_PASSWORD=admin
+ADMIN_PASSWORD=admin
