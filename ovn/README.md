@@ -12,7 +12,7 @@ ports, and routers. To use them, do the following:
 * Next, as admin again, run "quota.sh" to increase the default Neutron
   quota's for networks, routers, ports and subnets for the "ovntenant"
   user.
-* Lastly, run "scale.sh build" to deploy pairs of networks with routers.
-  This defaults to 1200 of these pairs, so 2400 networks/subnets, 4800
-  ports, and 1200 routers.
+* Lastly, as the "ovntenant" user, run "scale.sh build" to deploy pairs of
+  networks with routers. This defaults to 1200 of these pairs, so 2400
+  networks/subnets, 4800 ports, and 1200 routers.
 * Profit!
