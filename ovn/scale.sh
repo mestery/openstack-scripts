@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#COUNT=1200
 COUNT=1200
 
 if [ "$1" == "build" ] ; then
