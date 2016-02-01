@@ -11,7 +11,7 @@ if [ "$1" == "create" ]; then
     for i in `seq 0 $MAX_RUNS`; do
         seq 0 `echo $PORTS_PER_RUN - 1 | bc` | xargs -n 1 -P 5 bash _provider-scale-create.sh $i
     done
-elif [ "$2" == "destroy" ]; then
+elif [ "$1" == "destroy" ]; then
     for i in `seq 0 $MAX_RUNS`; do
         seq 0 `echo $PORTS_PER_RUN - 1 | bc` | xargs -n 1 -P 5 bash _provider-scale-destroy.sh $i
     done
