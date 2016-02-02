@@ -17,5 +17,5 @@ elif [ "$1" == "destroy" ] ; then
         seq 0 `echo $NETS_PER_RUN - 1 | bc` | xargs -n 1 -P 5 bash _scale-destroy.sh $i
     done
 else
-  echo "Usage: scale.sh <build | destroy>"
+  echo "Usage: scale.sh <create | destroy>"
 fi
