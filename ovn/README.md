@@ -39,11 +39,11 @@ networks. To use this, do the following:
 
 * As the "ovntenant" user, run the "create-routers.sh" script.
 
-provider-scale.sh
+port-scale.sh
 -----------------
 
-The script "provider-scale.sh" is meant to scale a large number of ports on a
-single provider network. It creates a provider network with a /16 subnet and
-then creates 10000 ports. To use this, do the following:
+The script "port-scale.sh" is meant to scale a large number of ports on a
+single network. It creates a network with a /16 subnet and then creates 10000
+ports. To use this, do the following:
 
-* As the "ovntenant" user, run the "provider-scale.sh" script.
+* As the "ovntenant" user, run the "port-scale.sh" script.
