@@ -1,32 +1,21 @@
 #!/bin/bash
 
-COUNT=1200
+MAX_NETS=1200
+NETS_PER_RUN=5
+MAX_RUNS=`echo "($MAX_NETS / $NETS_PER_RUN) - 1" | bc`
 
 if [ "$1" == "build" ] ; then
-  echo "Building scale setup"
+    echo "Building scale setup"
 
-  while [ "$COUNT" -gt "0" ] ; do
-    neutron net-create ovnnet-a-$COUNT
-    neutron net-create ovnnet-b-$COUNT
-    neutron subnet-create --name ovnsubnet-a-$COUNT ovnnet-a-$COUNT 10.10.10.0/24
-    neutron subnet-create --name ovnsubnet-b-$COUNT ovnnet-b-$COUNT 10.20.20.0/24
-    neutron router-create ovnrouter-$COUNT
-    neutron router-interface-add ovnrouter-$COUNT subnet=ovnsubnet-a-$COUNT
-    neutron router-interface-add ovnrouter-$COUNT subnet=ovnsubnet-b-$COUNT
-    COUNT=$((COUNT-1))
-  done
+    for i in `seq 0 $MAX_RUNS`; do
+        seq 0 `echo $NETS_PER_RUN - 1 | bc` | xargs -n 1 -P 5 bash _scale-create.sh $i
+    done
 elif [ "$1" == "destroy" ] ; then
-  echo "Destroying scale setup"
+    echo "Destroying scale setup"
 
-  while [ "$COUNT" -gt "0" ] ; do
-    neutron router-interface-delete ovnrouter-$COUNT subnet=ovnsubnet-b-$COUNT
-    neutron router-interface-delete  ovnrouter-$COUNT subnet=ovnsubnet-a-$COUNT
-    neutron router-delete ovnrouter-$COUNT
-    neutron net-delete ovnnet-a-$COUNT
-    neutron net-delete ovnnet-b-$COUNT
-    COUNT=$((COUNT-1))
-  done
+    for i in `seq 0 $MAX_RUNS`; do
+        seq 0 `echo $NETS_PER_RUN - 1 | bc` | xargs -n 1 -P 5 bash _scale-destroy.sh $i
+    done
 else
   echo "Usage: scale.sh <build | destroy>"
 fi
-
