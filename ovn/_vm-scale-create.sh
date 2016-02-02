@@ -1,4 +1,4 @@
-!/bin/bash
+#!/bin/bash
 
 # NOTE: The value "5" below needs to match the PORTS_PER_RUN variable
 #       in port-scale.sh
