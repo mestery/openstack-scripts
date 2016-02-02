@@ -27,7 +27,7 @@ own subnet, connected by a router. It does this 1200 times to give you 2400
 networks, 2400 subnets, 2400 ports, and 1200 routers. To use this, run the
 following:
 
-* As the "ovntenant" user, run "scale.sh build" to deploy pairs of networks
+* As the "ovntenant" user, run "scale.sh create" to deploy pairs of networks
   with routers. This defaults to 1200 of these pairs, so 2400 networks/subnets,
   4800 ports, and 1200 routers.
 

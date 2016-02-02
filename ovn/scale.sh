@@ -4,7 +4,7 @@ MAX_NETS=1200
 NETS_PER_RUN=5
 MAX_RUNS=`echo "($MAX_NETS / $NETS_PER_RUN) - 1" | bc`
 
-if [ "$1" == "build" ] ; then
+if [ "$1" == "create" ] ; then
     echo "Building scale setup"
 
     for i in `seq 0 $MAX_RUNS`; do
