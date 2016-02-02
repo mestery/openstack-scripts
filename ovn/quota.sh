@@ -6,3 +6,5 @@ neutron quota-update --tenant_id $PROJECTID --network 10000
 neutron quota-update --tenant_id $PROJECTID --router 5000
 neutron quota-update --tenant_id $PROJECTID --port 20000
 neutron quota-update --tenant_id $PROJECTID --subnet 10000
+nova quota-update --instances 50000 ovntenant
+nova quota-show --tenant ovntenant
