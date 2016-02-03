@@ -27,7 +27,7 @@ own subnet, connected by a router. It does this 1200 times to give you 2400
 networks, 2400 subnets, 2400 ports, and 1200 routers. To use this, run the
 following:
 
-* As the "ovntenant" user, run "scale.sh create" to deploy pairs of networks
+* __As the "ovntenant" user__, run "scale.sh create" to deploy pairs of networks
   with routers. This defaults to 1200 of these pairs, so 2400 networks/subnets,
   4800 ports, and 1200 routers.
 
@@ -37,7 +37,7 @@ create-routers.sh
 The script "create-routers.sh" will create 4000 routers spread across 200 shared
 networks. To use this, do the following:
 
-* As the "ovntenant" user, run the "create-routers.sh" script.
+* __As the "ovntenant" user__, run the "create-routers.sh" script.
 
 port-scale.sh
 -----------------
@@ -46,4 +46,4 @@ The script "port-scale.sh" is meant to scale a large number of ports on a
 single network. It creates a network with a /16 subnet and then creates 10000
 ports. To use this, do the following:
 
-* As the "ovntenant" user, run the "port-scale.sh" script.
+* __As the "ovntenant" user__, run the "port-scale.sh" script.
