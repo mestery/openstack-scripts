@@ -26,9 +26,13 @@ FLOATING_RANGE=192.168.210.0/24
 #NEUTRON_REPO=https://github.com/CiscoSystems/neutron.git
 #NEUTRON_BRANCH=odl_ml2
 
+# The below is needed on Fedora/CentOS
+#disable_service rabbit
+#enable_service qpid
+
 Q_PLUGIN=ml2
-Q_ML2_PLUGIN_MECHANISM_DRIVERS=opendaylight
-enable_service odl-compute
+enable_plugin networking-odl https://github.com/stackforge/networking-odl
+ODL_MODE=compute
 # NOTE: Set this to the controller's IP address
 ODL_MGR_IP=
 
